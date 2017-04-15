@@ -27,16 +27,11 @@ class AccentMap extends JFrame
         buttonPanel.setBounds(0,0,1270,710);
         buttonPanel.setLayout(null);
         Insets insets = pane.getInsets();
-
+        
         JButton england = new JButton();
-        buttonPanel.add(england);
-        england.setPreferredSize(new Dimension(10, 10));
-        Dimension size = england.getPreferredSize();
+        addButton(england, 618, 250);
         JButton france = new JButton();
-        buttonPanel.add(france);
-
-        france.setBounds(630 + insets.left, 280 + insets.top, size.width, size.height);
-        england.setBounds(618 + insets.left, 250 + insets.top, size.width, size.height);
+        addButton(france, 630, 280);
 
         //more buttons
 
@@ -54,8 +49,7 @@ class AccentMap extends JFrame
 
     }
 
-    public void playSound(String soundName)
-    {
+    public void playSound(String soundName){
         try 
         {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());;
@@ -69,8 +63,15 @@ class AccentMap extends JFrame
             ex.printStackTrace( );
         }
     }
-
-
+    
+    public void addButton(JButton accentName, int X, int Y){
+        buttonPanel.add(accentName);
+        Insets insets = pane.getInsets();
+        accentName.setPreferredSize(new Dimension(10, 10));
+        Dimension size = accentName.getPreferredSize();
+        accentName.setBounds(X + insets.left, Y + insets.top, size.width, size.height);
+    }
+   
     public static void main(String [] args)
     {
         AccentMap frame = new AccentMap();
