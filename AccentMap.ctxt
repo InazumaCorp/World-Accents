@@ -5,6 +5,7 @@ comment1.params=soundName
 comment1.target=void\ playSound(java.lang.String)
 comment2.params=accentname\ accentName\ X\ Y
 comment2.target=void\ addButton(java.lang.String,\ javax.swing.JButton,\ int,\ int)
+comment2.text=public\ void\ drawParagraph(String\ accentname){\n\ \ \ \ \ \ \ \ paragraphPanel.setOpaque(true);\n\ \ \ \ \ \ \ \ ImageIcon\ paragraphImage\ \=\ new\ ImageIcon(accentname\ +\ ".jpg");\n\ \ \ \ \ \ \ \ JLabel\ paragraph\ \=\ new\ JLabel(paragraphImage);\n}
 comment3.params=e
 comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment4.params=evt
