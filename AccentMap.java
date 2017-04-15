@@ -27,11 +27,11 @@ class AccentMap extends JFrame
         buttonPanel.setBounds(0,0,1270,710);
         buttonPanel.setLayout(null);
         Insets insets = pane.getInsets();
-        
+
         JButton england = new JButton();
-        addButton(england, 618, 250);
+        addButton("England", england, 618, 250);
         JButton france = new JButton();
-        addButton(france, 630, 280);
+        addButton("France", france, 630, 280);
 
         //more buttons
 
@@ -39,13 +39,6 @@ class AccentMap extends JFrame
         pane.add(buttonPanel, new Integer(2));
 
         setLayeredPane(pane);
-
-        england.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e)
-                {
-                    playSound("England.wav");
-                }
-            });
 
     }
 
@@ -63,15 +56,36 @@ class AccentMap extends JFrame
             ex.printStackTrace( );
         }
     }
-    
-    public void addButton(JButton accentName, int X, int Y){
+
+    public void addButton(String accentname, JButton accentName, int X, int Y){
         buttonPanel.add(accentName);
         Insets insets = pane.getInsets();
         accentName.setPreferredSize(new Dimension(10, 10));
         Dimension size = accentName.getPreferredSize();
         accentName.setBounds(X + insets.left, Y + insets.top, size.width, size.height);
+        accentName.setOpaque(false);
+        accentName.setContentAreaFilled(false);
+        accentName.setBorderPainted(false);
+
+        accentName.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent e){
+                    playSound(accentname + ".wav");
+                }
+            });
+        accentName.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    accentName.setOpaque(true);
+                    accentName.setContentAreaFilled(true);
+                    accentName.setBorderPainted(true);
+                }
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    accentName.setOpaque(false);
+                    accentName.setContentAreaFilled(false);
+                    accentName.setBorderPainted(false);
+                }
+            });
     }
-   
+
     public static void main(String [] args)
     {
         AccentMap frame = new AccentMap();
