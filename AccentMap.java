@@ -1,30 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 class AccentMap extends JFrame
 {
-    ImageIcon mapImage = new ImageIcon("/Users/Jivankhakee/Desktop/World Accents/map.jpg");
+    ImageIcon mapImage = new ImageIcon("/Users/Jivankhakee/Desktop/World Accents/map.jpg"); //note this can be fixed in eclipse with getClass().getResource("/images/yourImageName.extension");
     JDesktopPane pane = new JDesktopPane();
+    
     JLabel map = new JLabel(mapImage);
     JPanel buttonPanel = new JPanel();
     JPanel paragraphPanel = new JPanel();
 
     public AccentMap()
     {
-
         map.setBounds(0,0,1270,710);
-
-
         buttonPanel.setOpaque(false);
         buttonPanel.setBounds(0,0,1270,710);
         buttonPanel.setLayout(null);
@@ -62,12 +56,19 @@ class AccentMap extends JFrame
             ex.printStackTrace( );
         }
     }
-    
-    /*public void drawParagraph(String accentname){
-        paragraphPanel.setOpaque(true);
-        ImageIcon paragraphImage = new ImageIcon(accentname + ".jpg");
-        JLabel paragraph = new JLabel(paragraphImage);
-    }*/
+
+    public void drawParagraph(String accentname){
+        try 
+        {
+            ImageIcon paragraphImage = new ImageIcon(accentname + ".jpg");
+            JLabel paragraph = new JLabel(paragraphImage);
+        }
+        catch(Exception ex)
+        {
+            System.out.println("Error with Paragraph");
+            ex.printStackTrace( );
+        }
+    }
 
     public void addButton(String accentname, JButton accentName, int X, int Y){
         buttonPanel.add(accentName);
@@ -78,20 +79,19 @@ class AccentMap extends JFrame
         accentName.setOpaque(false);
         accentName.setContentAreaFilled(false);
         accentName.setBorderPainted(false);
-        //accentName.setBackground(Color.RED);
 
         accentName.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent e){
                     playSound(accentname + ".wav");
-                    //drawParagraph(accentName);
+                    drawParagraph(accentname);
                 }
             });
-            
+
         accentName.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    accentName.setBackground(Color.red);
                     accentName.setOpaque(true);
                     accentName.setContentAreaFilled(true);
-                    //accentName.setBackground(Color.RED);
                     accentName.setBorderPainted(true);
                 }
 
@@ -105,9 +105,9 @@ class AccentMap extends JFrame
 
     public static void main(String [] args)
     {
-        AccentMap frame = new AccentMap();
-        frame.setSize(1270,710); 
-        frame.setVisible(true); 
+        AccentMap window = new AccentMap();
+        window.setSize(1270,710); 
+        window.setVisible(true); 
     }
 
 }
