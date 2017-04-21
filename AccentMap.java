@@ -6,12 +6,12 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import java.util.concurrent.TimeUnit;
 
 class AccentMap extends JFrame
 {
     ImageIcon mapImage = new ImageIcon("/Users/Jivankhakee/Desktop/World Accents/map.jpg"); //note this can be fixed in eclipse with getClass().getResource("/images/yourImageName.extension");
     JDesktopPane pane = new JDesktopPane();
-    
     JLabel map = new JLabel(mapImage);
     JPanel buttonPanel = new JPanel();
     JPanel paragraphPanel = new JPanel();
@@ -27,10 +27,19 @@ class AccentMap extends JFrame
         paragraphPanel.setLayout(null);
         Insets insets = pane.getInsets();
 
-        JButton england = new JButton();
-        addButton("England", england, 618, 250);
-        JButton france = new JButton();
-        addButton("France", france, 630, 280);
+        JButton lithuania = new JButton();
+        addButton("Lithuania", lithuania, 700, 238);
+        JButton georgia = new JButton();
+        addButton("Georgia", georgia, 325, 345);
+        JButton denmark = new JButton();
+        addButton("Denmark", denmark, 652, 238);
+        JButton bahamas = new JButton();
+        addButton("Bahamas", bahamas, 348, 370);
+        JButton india = new JButton("India");
+        addButton("India", india, 500, 500);
+        JButton AustraliaQueensland = new JButton();
+        addButton("AustraliaQueensland", AustraliaQueensland, 1160, 550);
+        
 
         //more buttons
 
@@ -73,7 +82,7 @@ class AccentMap extends JFrame
     public void addButton(String accentname, JButton accentName, int X, int Y){
         buttonPanel.add(accentName);
         Insets insets = pane.getInsets();
-        accentName.setPreferredSize(new Dimension(10, 10));
+        accentName.setPreferredSize(new Dimension(15, 15));
         Dimension size = accentName.getPreferredSize();
         accentName.setBounds(X + insets.left, Y + insets.top, size.width, size.height);
         accentName.setOpaque(false);
@@ -84,6 +93,7 @@ class AccentMap extends JFrame
                 public void actionPerformed(ActionEvent e){
                     playSound(accentname + ".wav");
                     drawParagraph(accentname);
+                    //accentName.setEnabled(false);
                 }
             });
 
