@@ -8,7 +8,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 class AccentMap extends JFrame {
-	ImageIcon mapImage = new ImageIcon("/Users/Jivankhakee/Desktop/World Accents/map.jpg");
+	//ImageIcon mapImage = new ImageIcon("/Users/Jivankhakee/Desktop/World Accents/map.jpg");
+	ImageIcon mapImage = new ImageIcon(this.getClass().getResource("map.jpg"));
 	JDesktopPane pane = new JDesktopPane();
 	JLabel map = new JLabel(mapImage);
 	JPanel buttonPanel = new JPanel();
@@ -57,18 +58,18 @@ class AccentMap extends JFrame {
 		}
 	}
 
-	/*
-	 * public void drawParagraph(String accentname) {
-	 * paragraphPanel.setOpaque(true);
-	 * 
-	 * try { ImageIcon paragraphImage = new ImageIcon(accentname + ".jpg");
-	 * JLabel label = new JLabel(paragraphImage); paragraphPanel.add(label);
-	 * 
-	 * } catch (Exception ex) { System.out.println("Error with Paragraph");
-	 * ex.printStackTrace(); }
-	 * 
-	 * }
-	 */
+	/*public void drawParagraph(String accentname) {
+		try {
+			ImageIcon paragraphImage = new ImageIcon(accentname + ".jpg");
+			JLabel label = new JLabel(paragraphImage);
+			paragraphPanel.add(label);
+
+		} catch (Exception ex) {
+			System.out.println("Error with Paragraph");
+			ex.printStackTrace();
+		}
+
+	}*/
 
 	public void addButton(String accentname, JButton accentName, int X, int Y, int audioLength) {
 		buttonPanel.add(accentName);
@@ -84,7 +85,7 @@ class AccentMap extends JFrame {
 		accentName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				playSound(accentname + ".wav");
-				// drawParagraph(accentname);
+				//drawParagraph(accentname);
 			}
 		});
 
@@ -116,7 +117,7 @@ class AccentMap extends JFrame {
 
 	public static void main(String[] args) {
 		AccentMap window = new AccentMap();
-		window.setSize(1270, 730);
+		window.setSize(1270, 729);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
